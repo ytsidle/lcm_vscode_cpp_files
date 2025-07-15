@@ -1,0 +1,1 @@
+main(){long long a, b; __builtin_scanf("%lld%lld", &a, &b); __builtin_printf("%lld", a+b);}

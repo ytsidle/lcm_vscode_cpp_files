@@ -1,0 +1,1 @@
+{"name":"Luogu - P2210","url":"https://www.luogu.com.cn/problem/P2210","memoryLimit":128000,"timeLimit":1000,"tests":[{"id":1751284688735,"input":"6\n6 2 5\n1 3 4\n4 2 6\n5 3 2\n4 6 1\n1 5 3","output":"17"}],"group":"luogu","srcPath":"d:\\learnC++_forder\\vscode_cpp_files\\Luogu_P_2210.cpp"}
