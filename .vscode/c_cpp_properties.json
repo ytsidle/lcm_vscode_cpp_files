@@ -1,14 +1,13 @@
 {
   "configurations": [
     {
-      "compilerPath": "D:/TDM gcc for dev,clion/bin/gcc.exe",
-      "cppStandard": "${default}",
+      "compilerPath": "D:\\newgccg++\\mingw64\\bin\\g++.exe",
+      "cppStandard": "c++17",
       "includePath": [
-        "${workspaceFolder}/**"
+        "${{workspaceFolder}}/**"
       ],
       "intelliSenseMode": "windows-gcc-x64",
-      "name": "windows-gcc-x64",
-      "cStandard": "${default}"
+      "name": "Win32"
     }
   ],
   "version": 4
