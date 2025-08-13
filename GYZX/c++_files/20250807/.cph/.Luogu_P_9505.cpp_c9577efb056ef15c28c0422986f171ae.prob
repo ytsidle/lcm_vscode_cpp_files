@@ -1,0 +1,1 @@
+{"name":"Luogu - P9505","url":"https://www.luogu.com.cn/problem/P9505","memoryLimit":524288,"timeLimit":1000,"tests":[{"input":"5 2\n3 0 1 4 2","output":"7","id":1754567244288},{"id":1754567244289,"input":"10 3\n2 0 1 5 8 3 4 9 6 7","output":"53"}],"group":"luogu","srcPath":"e:\\c++_files\\20250807\\Luogu_P_9505.cpp"}

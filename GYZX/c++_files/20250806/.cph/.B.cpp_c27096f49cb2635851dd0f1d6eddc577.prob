@@ -1,0 +1,1 @@
+{"name":"Local: B","url":"e:\\c++_files\\20250806\\B.cpp","tests":[{"id":1754482082208,"input":"axyb\nabyxb\n","output":"axb\n"},{"id":1754482085406,"input":"aa\nxayaz\n","output":"aa\n"},{"id":1754482090613,"input":"a\nz\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++_files\\20250806\\B.cpp","group":"local","local":true}
