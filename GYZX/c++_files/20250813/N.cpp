@@ -13,7 +13,7 @@ struct Trie
         for(int i=0;i<=n;i++)
         for(int j=0;j<=25;j++)
         ch[i][j]=0;
-        cnt=0;
+        cnt=1;
         for(int i=0;i<=n;i++) sum[i]=0;
     }
     void insert(string &s){

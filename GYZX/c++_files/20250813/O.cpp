@@ -4,12 +4,11 @@ using namespace std;
 const int N=1e5+10;
 int n;
 int a[N],tr[N*33][2],cnt=1;
-void insert(int x){
+inline void insert(int x){
     int p=1;
     for(int i=31;i>=0;i--){
         //枚举位数
         int np=(x>>i)&1;//求出第i位
-        
         if(tr[p][np]==0) tr[p][np]=++cnt;
         p=tr[p][np];
     }
