@@ -2,14 +2,19 @@
 using namespace std;
 #define int long long
 const int N=5e5+10;
-int T,n,m,f[N],a[N],b[N],an,bn;
+int T,n,m,f[N],an,bn;
+vector<int> g[N];
 int find(int x) {
 	return f[x]==x?x:f[x]=find(f[x]);
 }
-int get() {
+int get(int i,int j) {
+	vector<int> a=g[i],b=g[j];
+	an=a.size()-1,bn=b.size()-1;
+//	cout<<i<<" : ";
+//	for(auto ttt:a) cout<<ttt<<" ";cout<<endl;
 	int mi=n-1;
 	for(int i=1; i<=an; i++) {
-		int p=lower_bound(b+1,b+1+bn,a[i])-b;
+		int p=lower_bound(b.begin(),b.end(),a[i])-b.begin();
 		if(p==bn+1) {
 			mi=min(mi,abs(a[i]-b[bn]));
 		} else if(p==1) mi=min(mi,abs(a[i]-b[1]));
@@ -17,22 +22,7 @@ int get() {
 	}
 	return mi;
 }
-int ge(int num) {
-	int ans=0,mi=n-1;
-	int p=lower_bound(b+1,b+1+bn,num)-b;
-	if(p==bn+1) {
-		mi=min(mi,abs(num-b[bn]));
-	} else if(p==1) mi=min(mi,abs(num-b[1]));
-	else mi=min({mi,abs(num-b[p-1]),abs(num-b[p])});
-	ans+=mi;
-	mi=n-1;
-	p=lower_bound(a+1,a+1+an,num)-a;
-	if(p==an+1) {
-		mi=min(mi,abs(num-a[an]));
-	} else if(p==1) mi=min(mi,abs(num-a[1]));
-	else mi=min({mi,abs(num-a[p-1]),abs(num-a[p])});
-	return ans;
-}
+
 signed main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
@@ -53,37 +43,29 @@ signed main() {
 			cout<<"0\n";
 			continue;
 		}
-		if(m==0) {
-			int re=n-1;
-			//		cout<<get()<<" -- "<<T+1<<"\n" ;
-			int ans=re*re;
-			int tmp=re/2;
-			int ans2=tmp*tmp+(re-tmp)*(re-tmp);
-			cout<<min(ans,ans2)<<"\n";
-			continue;
-		}
 		int fo=find(1),fn=find(n);
 		if(fo==fn) {
 			cout<<"0\n";
 			continue;
 		}
-		an=0,bn=0;
-		for(int i=1; i<=n; i++) {
-			if(find(i)==fo) a[++an]=i;
-			if(find(i)==fn) b[++bn]=i;
+		for(int i=1;i<=n;i++){
+			g[i].clear();
+			g[i].push_back(0);
 		}
-		sort(a+1,a+1+an);
-		sort(b+1,b+1+bn);//提前排序
-		int re=get();
+		for(int i=1;i<=n;i++){
+			g[find(i)].push_back(i);
+		}
+		for(int i=1;i<=n;i++)sort(g[i].begin(),g[i].end());
+		int re=get(fo,fn);;
 //		cout<<get()<<" -- "<<T+1<<"\n" ;
 		int ans=re*re;
 		int tmp=re/2;
-		int ans2=tmp*tmp+(re-tmp)*(re-tmp);
-		int ans3=1e9;
-		for(int i=2; i<=n-1; i++) {
-			if(find(i)!=fo&&find(i)!=fn) {
+		int ans2=(n-1)*(n-1);
+		int ans3=(n-1)*(n-1);
+		for(int i=1; i<=n; i++) {
+			if(find(i)!=fo&&find(i)!=fn&&find(i)==i) {
 				//计算
-				ans3=min(ans3,ge(i)) ;
+				ans3=min(ans3,get(i,fo)+get(i,fn)) ;
 			}
 		}
 		cout<<min({ans,ans2,ans3})<<"\n";
