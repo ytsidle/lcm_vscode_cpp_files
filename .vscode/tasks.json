@@ -1,7 +1,7 @@
 {
   "options": {
     "env": {
-      "Path": "D:\\newgccg++\\mingw64\\bin;${env:Path}"
+      "Path": "D:\\new-g++-1206\\mingw64\\bin;${env:Path}"
     }
   },
   "tasks": [
@@ -13,9 +13,9 @@
         "${fileDirname}\\${fileBasenameNoExtension}.exe",
         "-O2",
         "-fexec-charset=GBK",
-        "-std=c++17"
+        "-std=c++23"
       ],
-      "command": "D:\\newgccg++\\mingw64\\bin\\g++.exe",
+      "command": "D:\\new-g++-1206\\mingw64\\bin\\g++.exe",
       "group": {
         "isDefault": true,
         "kind": "build"
@@ -40,7 +40,7 @@
       "options": {
         "cwd": "${fileDirname}",
         "env": {
-          "Path": "D:\\newgccg++\\mingw64\\bin;${env:Path}"
+          "Path": "D:\\new-g++-1206\\mingw64\\bin;${env:Path}"
         }
       },
       "presentation": {

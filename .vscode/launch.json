@@ -5,12 +5,12 @@
       "args": [],
       "cwd": "${fileDirname}",
       "env": {
-        "PATH": "D:\\newgccg++\\mingw64\\bin;${env:PATH}"
+        "PATH": "D:\\new-g++-1206\\mingw64\\bin;${env:PATH}"
       },
       "environment": [],
       "externalConsole": true,
       "internalConsosleOptions": "neverOpen",
-      "miDebuggerPath": "D:\\newgccg++\\mingw64\\bin\\gdb.exe",
+      "miDebuggerPath": "D:\\new-g++-1206\\mingw64\\bin\\gdb.exe",
       "name": "single file debug",
       "preLaunchTask": "single file build",
       "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
