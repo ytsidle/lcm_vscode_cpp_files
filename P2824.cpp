@@ -38,6 +38,7 @@ void update(int p,int l,int r,int L,int R,int val){
         tr[p].tag=val;
         return;
     }
+//    cout<<"1;"<<p<<"\n";
     push_down(p,l,r);
     int mid=(l+r)>>1;
     if(L<=mid)update(p<<1,l,mid,L,R,val);
@@ -48,6 +49,7 @@ int query(int p,int l,int r,int L,int R){
     if(L<=l&&r<=R){
         return tr[p].sum;
     }
+//    cout<<"2;"<<p<<"\n";
     push_down(p,l,r);
     int mid=(l+r)>>1,ans=0;
     if(L<=mid)ans+=query(p<<1,l,mid,L,R);
@@ -63,14 +65,14 @@ bool check(int x){
             //升序
             int one=query(1,1,n,l,r);
             int zero=r-l+1-one;
-            update(1,1,n,l,l+zero-1,0);
+            if(zero!=0)update(1,1,n,l,l+zero-1,0);
             update(1,1,n,l+zero,r,1);
 
         }else{
             //降序
             int one=query(1,1,n,l,r);
             int zero=r-l+1-one;
-            update(1,1,n,l,l+one-1,1);
+            if(one!=0)update(1,1,n,l,l+one-1,1);
             update(1,1,n,l+one,r,0);
         } 
     }   
@@ -91,11 +93,13 @@ int main(){
     }
     cin>>q;
     int l=1,r=n,mid;
-    while(l<r){
+    while(l<=r){
         mid=(l+r)>>1;
-        if(check(mid))l=mid;
+        if(check(mid)){
+        	l=mid+1;
+		}
         else r=mid-1;
     }
-    cout<<l<<"\n";
+    cout<<r<<"\n";
     return 0;
 }
