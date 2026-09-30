@@ -26,18 +26,22 @@ int main(){
     cin.tie(0);
     cin>>n;
     mix=0,miy=0;
+    vector<ld> xl,yl;
     for(ll i=1;i<=n;i++){
         cin>>p[i].first>>p[i].second;
-        mix+=p[i].first;
-        miy+=p[i].second;
+        xl.emplace_back(p[i].first);yl.emplace_back(p[i].second);
     }
-    mix/=n;
-    miy/=n;
-    ld l=1e9+10,r=-1e9-10,lmid=1e9+10,rmid=-1e9-10;
-    for(ll i=1;i<=(5e6);i++){
+    sort(xl.begin(),xl.end());
+    sort(yl.begin(),yl.end());
+
+    mix=xl[xl.size()/2];
+    miy=yl[yl.size()/2];
+    cout<<fixed<<setprecision(6)<<mix<<" "<<miy<<"\n";
+    ld l=1e18+10,r=-1e18-10,lmid=1e18+10,rmid=-1e18-10;
+    for(ll i=1;i<=3e7;i++){
         //三分法
-        lmid=l+(r-l)/3;
-        rmid=r-(r-l)/3;
+        lmid=l+(r-l)/3.00;
+        rmid=r-(r-l)/3.00;
 //        cout<<f((lmid+rmid)/2)<<"e \n";
         if(f(lmid)<f(rmid)){
             r=rmid;
