@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int N = 2e5 + 5;
+const int N = 6e5 + 5;
 string s[N];
 int n, q, sz[N], rsz[N];
 struct Tree
@@ -19,7 +19,7 @@ struct Tree
     void add(int u, int v)
     {
         g[u].push_back(v);
-        // cerr<<u<<"->"<<v<<"\n";
+        // cerr << u << "->" << v << "\n";
     }
     void out()
     {
@@ -54,66 +54,40 @@ struct Uni
 int ch[N][27], tot = 1, dep[N];
 void insert(string s)
 {
-    int p = 1;
-    dep[p] = 0;
-    // cerr<<"#:"<<s<<"#\n";
-    for (int i = 0; i < s.size(); i++)
+    int u = 1;
+    dep[u] = 0;
+    for (int i = 0; i <= (int)s.size(); ++i)
     {
-        int &pp = ch[p][s[i] - 'a'];
-
-        if (pp == 0)
+        int c = i == (int)s.size() ? 26 : s[i] - 'a';
+        if (!ch[u][c])
         {
-            pp = ++tot;
-            sz[p]++;
-            rsz[p]++;
+            ch[u][c] = ++tot;
+            ++sz[u];
         }
-        // cerr<<pp<<"\n";
-        dep[pp] = dep[p] + 1;
-        p = pp;
+        dep[ch[u][c]] = dep[u] + 1;
+        u = ch[u][c];
     }
-    sz[p]++;
-    dep[++tot] = dep[p] + 1;
-    // cerr<<"end:"<<tot<<"\n";
-    ch[p][26] = tot;
 }
 int deg[N];
 using ll = long long;
 ll ans = 0;
 void dfs(int x, int l)
 {
-    if (l == 0)
+    int keep = (x == 1 || sz[x] != 1);
+    if (keep)
+    {
+        if (l)
+        {
+            ta.add(l, x);
+        }
         l = x;
-    int p = 0;
-    // cerr<<x<<" d " <<l<<"\n";
-    if (ch[x][26])
-        ta.add(l, ch[x][26]);
-    for (int i = 0; i < 26; i++)
+    }
+
+    ans += 1ll * (dep[x] * max(0, sz[x] - 1)) * dep[x];
+    for (int i = 0; i <= 26; i++)
     {
         if (ch[x][i])
-        {
-            p = ch[x][i];
-            break;
-        }
-    }
-    // cerr<<dep[x]<<" dep "<<x<<" "<<sz[x]<<'\n';
-    ans += 1ll * (dep[x] * max(0, sz[x] - 1)) * dep[x];
-    if (rsz[x] == 0)
-        return;
-    if (rsz[x] == 1)
-    {
-        dfs(p, l);
-    }
-    else
-    {
-        for (int i = 0; i < 26; i++)
-        {
-            if (ch[x][i])
-            {
-                p = ch[x][i];
-                ta.add(l, p);
-                dfs(p, 0);
-            }
-        }
+            dfs(ch[x][i], l);
     }
 }
 const int M = 1e5 + 5;
@@ -169,7 +143,7 @@ bool check2(Task task, int x)
         {
             if (ta.fa[v] != x)
             {
-                if (nodes[ta.fa[v]].f != 0 || suf[ta.fa[v]])
+                if ((nodes[ta.fa[v]].f != v && nodes[ta.fa[v]].f != 0) || suf[ta.fa[v]])
                     return 0;
             }
 
@@ -181,7 +155,7 @@ bool check2(Task task, int x)
         {
             if (ta.fa[u] != x)
             {
-                if (nodes[ta.fa[u]].l != 0 || nxt[ta.fa[u]])
+                if ((nodes[ta.fa[u]].l != v && nodes[ta.fa[u]].l != 0) || nxt[ta.fa[u]])
                     return 0;
             }
 
@@ -191,9 +165,10 @@ bool check2(Task task, int x)
         }
     }
     // cerr<<us<<" deg "<<vs<<"\n---\n";
-    if (nxt[us] || suf[vs] || uni.find(us) == uni.find(vs))
+    if ((nxt[us] == vs || nxt[us] == 0) && (suf[vs] == us || suf[vs] == 0))
+        return 1;
+    else
         return 0;
-    return 1;
 }
 void Modify(Task task, int x)
 {
