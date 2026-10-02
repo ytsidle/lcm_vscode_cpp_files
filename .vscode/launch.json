@@ -1,23 +1,23 @@
 {
-  "configurations": [
-    {
-      "MIMode": "gdb",
-      "args": [],
-      "cwd": "${fileDirname}",
-      "env": {
-        "PATH": "D:\\gccmingw\\mingw64\\bin;${env:PATH}"
-      },
-      "environment": [],
-      "externalConsole": 0,
-      "internalConsosleOptions": "neverOpen",
-      "miDebuggerPath": "D:\\gccmingw\\mingw64\\bin\\gdb.exe",
-      "name": "single file debug",
-      "preLaunchTask": "single file build",
-      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
-      "request": "launch",
-      "stopAtEntry": false,
-      "type": "cppdbg"
-    }
-  ],
-  "version": "0.2.0"
+      "configurations": [
+            {
+                  "MIMode": "gdb",
+                  "args": [],
+                  "cwd": "${fileDirname}",
+                  "env": {
+                        "PATH": "D:\\new-g++-1206\\mingw64\\bin;${env:PATH}"
+                  },
+                  "environment": [],
+                  "externalConsole": 0,
+                  "internalConsosleOptions": "neverOpen",
+                  "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe",
+                  "name": "single file debug",
+                  "preLaunchTask": "single file build",
+                  "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                  "request": "launch",
+                  "stopAtEntry": false,
+                  "type": "cppdbg"
+            }
+      ],
+      "version": "0.2.0"
 }

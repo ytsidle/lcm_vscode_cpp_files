@@ -1,11 +1,7 @@
 {
   "options": {
     "env": {
-<<<<<<< HEAD
-      "Path": "D:\\gccmingw\\mingw64\\bin;${env:Path}"
-=======
       "Path": "C:\\mingw64\\bin;${env:Path}"
->>>>>>> 208249fa793ee681c65321161a37b922b34e515b
     }
   },
   "tasks": [
@@ -17,11 +13,7 @@
         "${fileDirname}\\${fileBasenameNoExtension}.exe",
         "-std=c++23"
       ],
-<<<<<<< HEAD
-      "command": "D:\\gccmingw\\mingw64\\bin\\g++.exe",
-=======
       "command": "C:\\mingw64\\bin\\g++.exe",
->>>>>>> 208249fa793ee681c65321161a37b922b34e515b
       "group": {
         "isDefault": true,
         "kind": "build"
@@ -46,11 +38,7 @@
       "options": {
         "cwd": "${fileDirname}",
         "env": {
-<<<<<<< HEAD
-          "Path": "D:\\gccmingw\\mingw64\\bin;${env:Path}"
-=======
           "Path": "C:\\mingw64\\bin;${env:Path}"
->>>>>>> 208249fa793ee681c65321161a37b922b34e515b
         }
       },
       "presentation": {

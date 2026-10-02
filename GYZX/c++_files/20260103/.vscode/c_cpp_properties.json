@@ -1,11 +1,7 @@
 {
   "configurations": [
     {
-<<<<<<< HEAD
-      "compilerPath": "D:\\gccmingw\\mingw64\\bin\\g++.exe",
-=======
       "compilerPath": "C:\\mingw64\\bin\\g++.exe",
->>>>>>> 208249fa793ee681c65321161a37b922b34e515b
       "cppStandard": "c++23",
       "includePath": [
         "${{workspaceFolder}}/**"
